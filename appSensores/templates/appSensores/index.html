@@ -1,0 +1,43 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+
+<img src="{%static 'appSensores/academias.png'%}" alt="AcademiasIT"/>
+<div class="container">
+
+    <div class="btn-group">
+        <a type="button" class="btn btn-primary" href="actuadores">Actuadores</a>
+        <a type="button" class="btn btn-primary" href="graficos">Gráficos</a>
+    </div>
+    <h2>Lectura de Sensores</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% if ultimosMuestreos %}
+            <table class="table table-hover">
+                {% for muestreo in ultimosMuestreos %}
+                <tr>
+                    <td>{{ muestreo.id }}</td>
+                    <td><a href="/appSensores/{{ muestreo.id }}/">{{muestreo.origenMuestreo}}</a></td>
+                    <td>{{ muestreo.fechaMuestreo | date:"SHORT_DATE_FORMAT"}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>Aún no se lee los sensores</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+</div>
+
+
+

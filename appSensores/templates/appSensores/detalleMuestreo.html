@@ -1,0 +1,94 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% load static %}
+
+<img src="{%static 'appSensores/academias.png'%}" alt="AcademiasIT"/>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover">
+                {%if detalleAcelerometro%}
+                    <tr>
+                        <td>Acelerómetro X:</td><td>{{detalleAcelerometro.ejeX}}</td>
+                    </tr>
+                    <tr>
+                        <td>Acelerómetro Y:</td><td>{{detalleAcelerometro.ejeY}}</td>
+                    </tr>
+                    <tr>
+                        <td>Acelerómetro Z:</td><td>{{detalleAcelerometro.ejeZ}}</td>
+                    </tr>
+                {% else %}
+                    Aún no se lee los sensores
+                {% endif %}
+
+                {%if detalleActuador%}
+                    <tr>
+                        <td>Sensor 1 Habilitado:</td><td>{{detalleActuador.actuadorUno}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor 2 Habilitado:</td><td>{{detalleActuador.actuadorDos}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor 3 Habilitado:</td><td>{{detalleActuador.actuadorTres}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor 4 Habilitado:</td><td>{{detalleActuador.actuadorCuatro}}</td>
+                    </tr>
+                {% else %}
+                    No hay datos
+                {% endif %}
+
+                {%if detalleDistancia%}
+                <tr>
+                    <td>Sensor Distancia:</td><td>{{detalleDistancia.distancia}} cm</td>
+                </tr>
+                {% else %}
+                    No hay datos
+                {% endif %}
+
+                {%if detalleHumedad%}
+                <tr>
+                    <td>Sensor Humedad:</td><td>{{detalleHumedad.humedad}}%</td>
+                </tr>
+                {% else %}
+                    No hay datos
+                {% endif %}
+
+                {%if detalleMovimiento%}
+                <tr>
+                    <td>Sensor Movimiento:</td><td>{{detalleMovimiento.movimiento}}</td>
+                </tr>
+                {% else %}
+                    No hay datos
+                {% endif %}
+
+                {%if detalleTemperatura%}
+                <tr>
+                    <td>Sensor Temperaturas:</td><td>{{detalleTemperatura.temperatura}}°C</td>
+                </tr>
+                {% else %}
+                    No hay datos
+                {% endif %}
+
+            </table>
+            <br/>
+            <br/>
+
+            <div class="container">
+                <div class="col-12 col-md-auto">
+                    <button type="submit" class="btn btn-primary" onClick="javascript:history.go(-1);">
+                        Regresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

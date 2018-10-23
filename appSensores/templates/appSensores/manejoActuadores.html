@@ -1,0 +1,61 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<img src="{%static 'appSensores/academias.png'%}" alt="AcademiasIT"/>
+<div class="container">
+    <h2>Manejo de Actuadores</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr>
+                    <td>Sensor 1:</td>
+                    <td>{{detalleActuador.actuadorUno}}</td>
+                </tr>
+                <tr>
+                    <td>Sensor 2:</td>
+                    <td>{{detalleActuador.actuadorDos}}</td>
+                </tr>
+                <tr>
+                    <td>Sensor 3:</td>
+                    <td>{{detalleActuador.actuadorTres}}</td>
+                </tr>
+                <tr>
+                    <td>Sensor 4:</td>
+                    <td>{{detalleActuador.actuadorCuatro}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-12 col-md-auto">
+        <button type="submit" class="btn btn-primary" onClick="javascript:history.go(-1);">
+            Regresar
+        </button>
+    </div>
+</div>
+</body>
+
+
+
+
+</html>
+
+

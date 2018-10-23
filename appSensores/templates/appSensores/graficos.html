@@ -1,0 +1,54 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %} <!--Libreria para referenciar archivos en disco-->
+{% load jchart %} <!--Carga libreria para graficos-->
+
+<img src="{%static 'appSensores/academias.png'%}" alt="AcademiasIT"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h2>Graficos de Sensores</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-6 col-sm-offset-3">
+                {% if ultimoMuestreo %}
+                    {% render_chart 'plot_temperaturas' %} <!--Carga libreria para graficos-->
+                {% else %}
+                    <p>Aún no se lee los sensores</p>
+                {% endif %}
+            </div>
+            <div class="col-sm-6 col-sm-offset-3">
+                {% if ultimoMuestreo %}
+                    {% render_chart 'plot_humedad' %} <!--Carga libreria para graficos-->
+                {% else %}
+                    <p>Aún no se lee los sensores</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-12 col-md-auto">
+        <button type="submit" class="btn btn-primary" onClick="javascript:history.go(-1);">
+            Regresar
+        </button>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>
