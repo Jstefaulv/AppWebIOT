@@ -1,0 +1,4 @@
+django-bootstrap3
+django-jchart
+RPi.GPIO
+django-admin-interface
